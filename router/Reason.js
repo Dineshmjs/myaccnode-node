@@ -17,7 +17,7 @@ const TitleAvailable = async (res, title) => {
 
     available = credit - debit
 
-    const updateTitle = await titleSchema.updateOne({ title: title }, { $set: { credit: credit, debit: debit, available: available } })
+    const updateTitle = await titleSchema.updateOne({ _id: title }, { $set: { credit: credit, debit: debit, available: available } })
     if (updateTitle.ok === 1) {
         res.status(200).send(updateTitle)
     }
@@ -76,7 +76,7 @@ reason.put("/", async (req, res) => {
 reason.delete("/", async (req, res) => {
     const {title,reason} = req.query
     console.log(title,reason)
-    const remove =await reasonSchema.deleteOne({title,reason})
+    const remove =await reasonSchema.deleteOne({title,_id:reason})
     TitleAvailable(res,title)
     
 })
