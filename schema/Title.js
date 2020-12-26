@@ -4,6 +4,10 @@ const title = mongoose.Schema({
         type:String,
         required:true
     },
+    uid:{
+        type:String,
+        required:true
+    },
     type:{
         type:String,
         required:true

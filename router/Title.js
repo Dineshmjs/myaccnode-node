@@ -3,12 +3,13 @@ const titleSchema = require('../schema/Title')
 const reasonSchema = require('../schema/Reason')
 
 title.post("/",async(req,res)=>{
-    const {title,type} = req.body
+    const {title,type,uid} = req.body
     console.log("req",req.body)
     
     const  postData = {
-        title:title,
-        type:type,
+        title,
+        type,
+        uid,
         debit:0,
         credit:0,
         available:0
@@ -29,7 +30,7 @@ title.post("/",async(req,res)=>{
 })
 
 title.get("/",async(req,res)=>{
-    const data = await titleSchema.find()
+    const data = await titleSchema.find({uid:req.query.uid})
     res.send(data)
 })
 
