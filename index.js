@@ -12,9 +12,11 @@ app.use(express.json())
 
 const reason = require('./router/Reason')
 const title = require('./router/Title')
+const file = require('./router/File')
 
 app.use("/reason",reason)
 app.use("/title",title)
+app.use("/files",file)
 
 app.get("/",(req,res)=>{
     res.json("Root")
